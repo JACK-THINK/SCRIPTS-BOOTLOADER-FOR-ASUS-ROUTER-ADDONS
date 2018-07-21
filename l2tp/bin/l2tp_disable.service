@@ -1,0 +1,100 @@
+#!/bin/sh
+#
+########## SET THE CUSTOM VARIABLES ##########
+#
+# 设置自定义变量
+# 当该程序运行结束，此处设置的变量自动取消
+#
+# USB_MOUNT_POINT: The mount point of the USB flash drive
+# 设置自定义变量USB_MOUNT_POINT为U盘挂载点
+USB_MOUNT_POINT=$(nvram get script_usbmount | awk -F / '{print "/"$2"/"$3"/"$4}')
+#
+# SBL_SYS_USR: The directory which contains all the external software resources (add-ons) related to SCRIPTS-BOOTLOADER-FOR-ASUS-ROUTER
+# 设置自定义变量SBL_SYS_USR为SCRIPTS-BOOTLOADER-FOR-ASUS-ROUTER系统外部软件资源目录，即插件目录
+SBL_SYS_USR=${USB_MOUNT_POINT}/script_bootloader/usr
+#
+# PRIVATE_TMP: The directory which contains all the temporary files related to this program
+# 设置自定义变量PRIVATE_TMP为此程序临时文件目录
+PRIVATE_TMP=${SBL_SYS_USR}/l2tp/tmp
+#
+# ROUTES_TO_DISABLE: The list of routes that should be disabled
+# 设置自定义变量ROUTES_TO_DISABLE为待结束服务列表文件
+ROUTES_TO_DISABLE="${PRIVATE_TMP}/routes_to_disable.tmp"
+#
+# NAME OF THE SERVICE
+# 服务名称
+SERVICE_NAME="L2TP"
+#
+# FUNCTION OF THE SERVICE
+# 服务功能
+SERVICE_FUNCTION="DISABLE"
+#
+########## END ##########
+#
+#
+########## NOTIFICATION ##########
+#
+logger -st "($(basename $0))" $$ "*--------- ${SERVICE_NAME}_${SERVICE_FUNCTION} SERVICE ---------*"
+#
+########## END ##########
+#
+#
+########## L2TP VPN CONFIGURATION ##########
+#
+# Protocol type
+PROTOCOL="disable"
+#
+# IP Address of the L2TP VPN Server
+SERVER_IP_ADDRESS=""
+#
+# Username
+USERNAME=""
+#
+# Password
+PASSWORD=""
+#
+# Network Interface
+IFNAME="ppp5"
+#
+########## END ##########
+#
+#
+########## SET L2TP VPN CLIENT ##########
+#
+nvram set vpnc_heartbeat_x=${SERVER_IP_ADDRESS}
+nvram set vpnc_pppoe_passwd=${PASSWORD}
+nvram set vpnc_pppoe_username=${USERNAME}
+nvram set vpnc_proto=${PROTOCOL}
+#
+########## END ##########
+#
+#
+########## RESTORE ROUTE TABLE ##########
+#
+# Create ${ROUTES_TO_DISABLE} to delete all the routes whose destination address doesn't begin with 192, 127 or 0
+# 查找路由表中除去以192、127、0开头的全部目标地址，并创建删除这些路由条目的文件${ROUTES_TO_DISABLE}
+route -n | tail -n +3 | grep -vE -e '^(192|127|0).*' | awk '{print $1}' | sed 's/^/route del /' > ${ROUTES_TO_DISABLE}
+#
+# Make ${ROUTES_TO_DISABLE} executable
+# 使文件${ROUTES_TO_DISABLE}可执行
+chmod a+x ${ROUTES_TO_DISABLE}
+#
+# Load ${ROUTES_TO_DISABLE}
+# 加载文件${ROUTES_TO_DISABLE}
+${ROUTES_TO_DISABLE}
+#
+########## END ##########
+#
+#
+########## DISABLE L2TP VPN CLIENT ##########
+#
+service restart_vpncall
+#
+########## END ##########
+#
+#
+########## NOTIFICATION ##########
+#
+logger -st "($(basename $0))" $$ "***** ${SERVICE_NAME}_${SERVICE_FUNCTION} SERVICE HAS BEEN LOADED *****"
+#
+########## END ##########
