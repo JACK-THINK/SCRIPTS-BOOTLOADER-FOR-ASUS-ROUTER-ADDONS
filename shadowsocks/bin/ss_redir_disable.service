@@ -25,7 +25,7 @@ logger -st "($(basename $0))" $$ "*--------- ${SERVICE_NAME}_${SERVICE_FUNCTION}
 #
 ########## DISABLE SS-REDIR ##########
 #
-ps | grep "ss-redir" | grep -v "grep" | awk '{print $1}' | xargs kill
+ps | grep -E 'ss-redir.*config_redir\.json' | grep -v 'grep' | awk '{print $1}' | xargs kill
 #
 ########## END ##########
 #

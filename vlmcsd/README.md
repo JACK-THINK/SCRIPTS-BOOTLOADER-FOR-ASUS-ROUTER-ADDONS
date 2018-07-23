@@ -51,5 +51,5 @@
 
 | 插件文件                | 插件调用者                   | 调用位置    |
 | ----------------------- | ---------------------------- | ----------- |
-| vlmcsd_enable.service | list_of_user_custom_scripts | 53行起（安装后需手动配置开机加载） |
+| vlmcsd_enable.service | monit.d/vlmcsd |  |
 | vlmcsd_disable.service | script_bootloader_usb_umount | 自动调用 |

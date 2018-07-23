@@ -37,7 +37,7 @@ logger -st "($(basename $0))" $$ "*--------- ${SERVICE_NAME}_${SERVICE_FUNCTION}
 #
 ########## DISABLE V2RAY CLIENT ##########
 #
-ps | grep "${PRIVATE_USR}/v2ray" | grep -v "grep" | awk '{print $1}' | xargs kill
+ps | grep -E 'v2ray.*config_client\.json' | grep -v 'grep' | awk '{print $1}' | xargs kill
 #
 ########## END ##########
 #

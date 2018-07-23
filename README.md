@@ -24,4 +24,4 @@
    - development_tools
 3. 将所需插件目录存放至`script_bootloader/usr/`目录下
 4. 执行插件`bin`目录中的`*_install`（若有）安装插件
-5. 更改`script_bootloader/bin/list_of_user_custom_scripts`文件，在53行起插入需启用的插件路径
+5. 更改`script_bootloader/bin/list_of_user_custom_scripts`文件，在66行起插入需启用的插件路径

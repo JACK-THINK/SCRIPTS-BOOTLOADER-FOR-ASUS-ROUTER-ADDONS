@@ -25,7 +25,7 @@ logger -st "($(basename $0))" $$ "*--------- ${SERVICE_NAME}_${SERVICE_FUNCTION}
 #
 ########## DISABLE SS-TUNNEL ##########
 #
-ps | grep "ss-tunnel" | grep -v "grep" | awk '{print $1}' | xargs kill
+ps | grep -E 'ss-tunnel.*config_tunnel\.json' | grep -v 'grep' | awk '{print $1}' | xargs kill
 #
 ########## END ##########
 #

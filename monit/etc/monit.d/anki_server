@@ -1,0 +1,4 @@
+check process anki_server with MATCHING '.*production.ini'
+    start program = "/tmp/mnt/ASUS_ROUTER/script_bootloader/usr/anki_server/bin/anki_server_enable.service"
+    stop program = "/tmp/mnt/ASUS_ROUTER/script_bootloader/usr/anki_server/bin/anki_server_disable.service"
+    if does not exist then restart

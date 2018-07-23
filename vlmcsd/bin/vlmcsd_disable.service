@@ -37,7 +37,7 @@ logger -st "($(basename $0))" $$ "*--------- ${SERVICE_NAME}_${SERVICE_FUNCTION}
 #
 ########## DISABLE VLMCSD ##########
 #
-ps | grep "${PRIVATE_USR}/vlmcsd" | grep -v "grep" | awk '{print $1}' | xargs kill
+ps | grep -E 'vlmcsd' | grep -v 'grep' | awk '{print $1}' | xargs kill
 #
 ########## END ##########
 #

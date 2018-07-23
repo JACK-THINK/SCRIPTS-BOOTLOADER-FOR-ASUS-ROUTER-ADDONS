@@ -25,7 +25,7 @@ logger -st "($(basename $0))" $$ "*--------- ${SERVICE_NAME}_${SERVICE_FUNCTION}
 #
 ########## DISABLE SS-SERVER ##########
 #
-ps | grep "ss-server" | grep -v "grep" | awk '{print $1}' | xargs kill
+ps | grep -E 'ss-server.*config_server\.json' | grep -v 'grep' | awk '{print $1}' | xargs kill
 #
 ########## END ##########
 #

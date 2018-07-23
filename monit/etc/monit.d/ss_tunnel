@@ -1,0 +1,4 @@
+check process ss_tunnel with MATCHING '.*ss-tunnel.*config_tunnel.json'
+    start program = "/tmp/mnt/ASUS_ROUTER/script_bootloader/usr/shadowsocks/bin/ss_tunnel_enable.service"
+    stop program = "/tmp/mnt/ASUS_ROUTER/script_bootloader/usr/shadowsocks/bin/ss_tunnel_disable.service"
+    if does not exist then restart

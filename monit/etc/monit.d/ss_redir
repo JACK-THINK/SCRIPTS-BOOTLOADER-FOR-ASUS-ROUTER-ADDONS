@@ -1,0 +1,4 @@
+check process ss_redir with MATCHING '.*ss-redir.*config_redir.json'
+    start program = "/tmp/mnt/ASUS_ROUTER/script_bootloader/usr/shadowsocks/bin/ss_redir_enable.service"
+    stop program = "/tmp/mnt/ASUS_ROUTER/script_bootloader/usr/shadowsocks/bin/ss_redir_disable.service"
+    if does not exist then restart
