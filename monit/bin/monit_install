@@ -60,6 +60,9 @@ then
     #
     # Configure monit
     # 配置monit
+    cp /opt/etc/init.d/S99monit ${PRIVATE_ETC}/S99monit.bak
+    sed -i '/^ARGS/s/^/#/' /opt/etc/init.d/S99monit
+    sed -i '/^#ARGS/ a\ARGS="-c /opt/etc/monitrc"' /opt/etc/init.d/S99monit    
     cp /opt/etc/monitrc /opt/etc/monitrc.bak
     cp /opt/etc/monitrc ${PRIVATE_ETC}/monitrc.bak
     cp ${PRIVATE_ETC}/monitrc /opt/etc/
