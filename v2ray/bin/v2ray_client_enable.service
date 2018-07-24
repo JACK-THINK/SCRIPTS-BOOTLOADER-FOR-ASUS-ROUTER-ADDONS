@@ -49,6 +49,8 @@ then
     # Load ${PRIVATE_USR}/v2ray
     # 如果文件${PRIVATE_USR}/v2ray存在，则执行
     nohup ${PRIVATE_USR}/v2ray -config ${PRIVATE_ETC}/config_client.json &> /dev/null &
+    PID=$(echo $!)
+    echo ${PID} > /var/run/v2ray_client.pid
     logger -st "($(basename $0))" $$ "***** ${SERVICE_NAME}_${SERVICE_FUNCTION} SERVICE HAS BEEN LOADED *****"
     #
 else

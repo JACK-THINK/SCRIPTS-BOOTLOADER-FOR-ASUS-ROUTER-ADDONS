@@ -1,4 +1,4 @@
-check process v2ray_bridge with MATCHING '.*v2ray.*config_bridge.json'
+check process v2ray_bridge with pidfile '/var/run/v2ray_bridge.pid'
     start program = "/tmp/mnt/ASUS_ROUTER/script_bootloader/usr/v2ray/bin/v2ray_bridge_enable.service"
-    stop program = "/tmp/mnt/ASUS_ROUTER/script_bootloader/usr/v2ray/bin/v2ray_bridge_disable.service"
+    stop program = "/bin/sh -c 'kill -15 $(cat /var/run/v2ray_bridge.pid)'"
     if does not exist then restart

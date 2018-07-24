@@ -1,4 +1,4 @@
-check process v2ray_client with MATCHING '.*v2ray.*config_client.json'
+check process v2ray_client with pidfile '/var/run/v2ray_client.pid'
     start program = "/tmp/mnt/ASUS_ROUTER/script_bootloader/usr/v2ray/bin/v2ray_client_enable.service"
-    stop program = "/tmp/mnt/ASUS_ROUTER/script_bootloader/usr/v2ray/bin/v2ray_client_disable.service"
+    stop program = "/bin/sh -c 'kill -15 $(cat /var/run/v2ray_client.pid)'"
     if does not exist then restart

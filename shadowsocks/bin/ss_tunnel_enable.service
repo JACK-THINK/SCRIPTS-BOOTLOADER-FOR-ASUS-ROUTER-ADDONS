@@ -45,6 +45,8 @@ then
     # Load ss-tunnel
     # 如果文件${PRIVATE_ETC}/config_tunnel.json存在，则执行
     nohup ss-tunnel -c ${PRIVATE_ETC}/config_tunnel.json &> /dev/null &
+    PID=$(echo $!)
+    echo ${PID} > /var/run/ss_tunnel.pid
     logger -st "($(basename $0))" $$ "***** ${SERVICE_NAME}_${SERVICE_FUNCTION} SERVICE HAS BEEN LOADED *****"
     #
 else
