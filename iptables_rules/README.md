@@ -33,19 +33,19 @@
 
 | 插件文件                          | 插件调用者                   | 调用位置  |
 | --------------------------------- | ---------------------------- | --------- |
-| iptables_rules_primary_router_enable.service  | list_of_user_custom_scripts  | 66行起（安装后需手动配置开机加载） |
+| iptables_rules_primary_router_enable.service  | list_of_user_custom_scripts | 66行起（安装后需手动配置开机加载） |
 | iptables_rules_primary_router_disable.service | script_bootloader_usb_umount | 自动调用 |
 
 ## 需修改部分
 
 `iptables_rules/bin/iptables_rules_primary_router_enable.service`
 
-| 行号 | 代码 | 说明             |
-| ---- | ---- | ---------------- |
-| 41起 |      | iptables规则语句 |
+| 行号 | 说明             |
+| ---- | ---------------- |
+| 第41行起 | iptables规则语句 |
 
 `iptables_rules/bin/iptables_rules_primary_router_disable.service`
 
-| 行号 | 代码 | 说明                 |
-| ---- | ---- | -------------------- |
-| 31起 |      | iptables规则删除语句 |
+| 行号 | 说明                 |
+| ---- | -------------------- |
+| 第31行起 | iptables规则删除语句 |

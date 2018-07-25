@@ -52,4 +52,4 @@
 
 ## 调用方法
 
-依赖entware运行
+由entware自动执行

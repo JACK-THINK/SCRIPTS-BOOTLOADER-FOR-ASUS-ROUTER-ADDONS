@@ -39,7 +39,7 @@
 
 | 插件文件                          | 插件调用者                   | 调用位置  |
 | --------------------------------- | ---------------------------- | --------- |
-| l2tp_enable.service | list_of_user_custom_scripts  | 66行起（安装后需手动配置开机加载） |
+| l2tp_enable.service | list_of_user_custom_scripts | 第64行（安装后需手动配置开机加载。启用：删除行首`#`；禁用：恢复行首`#`） |
 | l2tp_disable.service | script_bootloader_usb_umount | 自动调用 |
 
 ## 需修改部分

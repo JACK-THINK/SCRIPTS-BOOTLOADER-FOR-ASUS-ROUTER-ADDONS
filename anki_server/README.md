@@ -3,7 +3,7 @@
 ## 概述
 
 1. 本插件用于安装、配置、启动和结束anki_server
-2. 暂时不能开机自启
+2. 暂时不能开机自动启动
 
 ## 安装前提
 
@@ -73,8 +73,8 @@
 
 | 插件文件                          | 插件调用者                   | 调用位置  |
 | --------------------------------- | ---------------------------- | --------- |
-| anki_server_enable.service | list_of_user_custom_scripts  | 66行起（安装后需手动配置开机加载） |
-| anki_server_disable.service | script_bootloader_usb_umount | 自动调用 |
+| anki_server_enable.service | 暂无  | 从shell中手动执行 |
+| anki_server_disable.service | 暂无 | 从shell中手动执行 |
 
 ## 特殊说明
 

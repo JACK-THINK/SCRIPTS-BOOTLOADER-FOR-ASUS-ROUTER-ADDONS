@@ -48,6 +48,10 @@
    > | **armv7**   | RT-AC68U, RT-AC56U, RT-AC87U, RT-AC3200, RT-AC88U, RT-AC3100, RT-AC5300, GT-AC5300 |
    > | **mipsel**  | RT-N66U, RT-AC66U, RT-N16                                    |
 
+## 调用方法
+
+由entware自动执行
+
 ## 特殊说明
 
 1. `ASUS_ROUTER/script_bootloader/usr/monit/etc/monit.d`目录下存放了一些预置的服务监控配置文件，默认为禁用状态。若要启用，请将其重新命名为
