@@ -4,6 +4,15 @@
 
 1. 本插件用于安装、配置、启动和结束v2ray
 2. v2ray客户端，用来连接远端v2ray服务器
+3. 客户端需安装socks5代理工具连接本插件
+
+   | 客户端    | 代理工具      |
+   | --------- | ---------     |
+   | Chrome    | SwitchyOmega  |
+   | iOS       | Kitsunebi     |
+   | Android   | BifrostV      |
+
+4. 暂不开发透明代理，直到华硕官方固件支持tproxy
 
 ## 安装前提
 
