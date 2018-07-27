@@ -21,7 +21,7 @@
 | ----------------- | -------- | ------------------------------------------------------------ |
 | anki_server       | 2.0.6    | anki记忆系统私有服务器                                       |
 | ddns              |          | DDNS插件（DNS服务商为[HE.NET](https://dns.he.net/)）         |
-| ddns_monit        |          | DDNS插件(monit管理)（DNS服务商为[HE.NET](https://dns.he.net/)） |
+| ddns_monit        |          | DDNS插件（monit管理）（DNS服务商为[HE.NET](https://dns.he.net/)） |
 | debian            | Jessie   | Debian的chroot环境。可安装Debian系统下大部分软件包，软件数量远大于Entware |
 | iptables_rules    |          | 防火墙规则固化插件                                           |
 | l2tp              |          | l2tp客户端                                                   |
