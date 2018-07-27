@@ -21,7 +21,8 @@
 2. 按次序安装并启用下列插件
    - swap
    - entware
+   - monit
    - development_tools
 3. 将所需插件目录存放至`script_bootloader/usr/`目录下
 4. 执行插件`bin`目录中的`*_install`（若有）安装插件
-5. 更改`script_bootloader/bin/list_of_user_custom_scripts`文件，在66行起插入需启用的插件路径
+5. 根据各插件README.md的具体说明及插件管理者[使用说明](https://github.com/JACK-THINK/SCRIPTS-BOOTLOADER-FOR-ASUS-ROUTER/blob/master/How_to_Use.md#%E5%90%AF%E7%94%A8%E7%A6%81%E7%94%A8%E6%8F%92%E4%BB%B6)启用插件
