@@ -1,4 +1,0 @@
-check process vlmcsd with matching 'vlmcsd'
-    start program = "/opt/script_bootloader/usr/vlmcsd/bin/vlmcsd_enable.service"
-    stop program = "/opt/script_bootloader/usr/vlmcsd/bin/vlmcsd_disable.service"
-    if does not exist then restart
