@@ -31,10 +31,10 @@
 
 ## 调用方法
 
-| 插件文件                          | 插件调用者                   | 调用位置  |
-| --------------------------------- | ---------------------------- | --------- |
-| wol_enable.service | list_of_user_custom_scripts | 第58行（安装后需手动配置开机加载。启用：删除行首`#`；禁用：恢复行首`#`） |
-| wol_disable.service | script_bootloader_usb_umount | 自动调用 |
+| 插件文件            | 插件调用者  |
+| ------------------  | ------------|
+| wol_enable.service  | monit.d/wol |
+| wol_disable.service | monit.d/wol |
 
 ## 需修改部分
 

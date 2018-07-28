@@ -49,7 +49,7 @@
 
 ## 调用方法
 
-| 插件文件                | 插件调用者                   | 调用位置    |
-| ----------------------- | ---------------------------- | ----------- |
-| vlmcsd_enable.service | monit.d/vlmcsd |  |
-| vlmcsd_disable.service | script_bootloader_usb_umount | 自动调用 |
+| 插件文件               | 插件调用者     |
+| ---------------------- | -------------- |
+| vlmcsd_enable.service  | monit.d/vlmcsd |
+| vlmcsd_disable.service | monit.d/vlmcsd |

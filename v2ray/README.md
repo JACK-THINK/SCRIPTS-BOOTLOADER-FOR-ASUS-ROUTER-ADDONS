@@ -59,10 +59,10 @@
 
 ## 调用方法
 
-| 插件文件                | 插件调用者                   | 调用位置    |
-| ----------------------- | ---------------------------- | ----------- |
-| v2ray_client_enable.service | monit.d/v2ray_client |  |
-| v2ray_client_disable.service | script_bootloader_usb_umount | 自动调用 |
+| 插件文件                     | 插件调用者            |
+| -----------------------      | --------------------- |
+| v2ray_client_enable.service  | monit.d/v2ray_client  |
+| v2ray_client_disable.service | monit.d/v2ray_client  |
 
 ## 需修改部分
 

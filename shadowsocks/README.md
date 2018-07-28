@@ -55,10 +55,10 @@
 
 ## 调用方法
 
-| 插件文件             | 插件调用者                   | 调用位置    |
-| -------------------- | ---------------------------- | ----------- |
-| ss_local_enable.service | monit.d/ss_local |  |
-| ss_local_disable.service | script_bootloader_usb_umount | 自动调用 |
+| 插件文件                 | 插件调用者       |
+| -------------------      | ---------------- |
+| ss_local_enable.service  | monit.d/ss_local |
+| ss_local_disable.service | monit.d/ss_local |
 
 ## 需修改部分
 
