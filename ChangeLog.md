@@ -1,15 +1,16 @@
 # 更新日志
 
-## 版本3.0（2018-07-27）
+## 版本3.0（2018-07-31）
 
 #### 新增
 
-1. 新增插件ddns_monit
+1. 无
 
 #### 变更
 
 1. 迁移插件monit至SCRIPTS-BOOTLOADER-FOR-ASUS-ROUTER系统
 2. 更新v2ray
+3. 更新ddns
 
 #### 删除
 
@@ -21,7 +22,6 @@
 | ----------------- | -------- | ------------------------------------------------------------ |
 | anki_server       | 2.0.6    | anki记忆系统私有服务器                                       |
 | ddns              |          | DDNS插件（DNS服务商为[HE.NET](https://dns.he.net/)）         |
-| ddns_monit        |          | DDNS插件（monit管理）（DNS服务商为[HE.NET](https://dns.he.net/)） |
 | debian            | Jessie   | Debian的chroot环境。可安装Debian系统下大部分软件包，软件数量远大于Entware |
 | iptables_rules    |          | 防火墙规则固化插件                                           |
 | l2tp              |          | l2tp客户端                                                   |
