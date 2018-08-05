@@ -64,7 +64,7 @@ then
         fi
         cp -P ${TARGET_TIME_ZONE} /tmp/etc/
         #
-        logger -st "($(basename $0))" $$ "***** ${SERVICE_NAME} SERVICE HAS BEEN LOADED *****"
+        logger -st "($(basename $0))" $$ "***** ${SERVICE_NAME}_${SERVICE_FUNCTION} SERVICE HAS BEEN LOADED *****"
         #
     else
         # Do nothing but prompt the user
