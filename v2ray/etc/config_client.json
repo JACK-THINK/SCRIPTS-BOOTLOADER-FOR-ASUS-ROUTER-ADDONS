@@ -8,7 +8,8 @@
         {
             "auth":"noauth",
             "udp":true,
-            "ip":"127.0.0.1"
+            "ip":"127.0.0.1",
+            "userLevel":1
         },
         "tag":"main_inbound"
     },
@@ -36,5 +37,15 @@
             ]
         },
         "tag":"main_outbound"
+    },
+    "policy":
+    {
+        "levels":
+        {
+            "1":
+            {
+                "bufferSize":2048
+            }
+        }
     }
 }
