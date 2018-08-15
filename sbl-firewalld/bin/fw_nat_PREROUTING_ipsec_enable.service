@@ -49,10 +49,17 @@ WAN_IP_ADDRESS=$(ifconfig ppp0 | grep 'inet' | awk '{print $2}' | tr -d 'addr:')
 #
 ########## GET DESTINATION IP ADDRESS ##########
 #
+# Check if ${USER_DEFINED_CHAIN_NAME} is referenced by ${BUILT_IN_CHAIN_NAME}
+# 检查${USER_DEFINED_CHAIN_NAME}是否被${BUILT_IN_CHAIN_NAME}所引用
 if [ -z $(iptables -t ${TABLE_NAME} -nvL ${BUILT_IN_CHAIN_NAME} | grep "${USER_DEFINED_CHAIN_NAME}") ]
 then
+    # Make ${DESTINATION_IP_ADDRESS} 'NULL'
+    # 如果未被引用，则令${DESTINATION_IP_ADDRESS}为'NULL'
     DESTINATION_IP_ADDRESS='NULL'
+    #
 else
+    # Get ${DESTINATION_IP_ADDRESS} from ${BUILT_IN_CHAIN_NAME}
+    # 从${BUILT_IN_CHAIN_NAME}中获取${DESTINATION_IP_ADDRESS}
     DESTINATION_IP_ADDRESS=$(iptables -t ${TABLE_NAME} -nvL ${BUILT_IN_CHAIN_NAME} | grep "${USER_DEFINED_CHAIN_NAME}" | awk '{print $9}')
 fi
 #
