@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+########## SET THE CUSTOM VARIABLES ##########
+#
+# 设置自定义变量
+# 当该程序运行结束，此处设置的变量自动取消
+#
+# NAME OF THE SERVICE
+# 服务名称
+SERVICE_NAME="IPSEC"
+#
+# NAME OF THE TABLE
+# 防火墙表名
+TABLE_NAME="nat"
+#
+# NAME OF THE BUILT-IN CHAIN
+# 防火墙默认链名
+BUILT_IN_CHAIN_NAME="PREROUTING"
+#
+# NAME OF THE USER-DEFINED CHAIN
+# 防火墙自定义链名
+USER_DEFINED_CHAIN_NAME="IPSEC"
+#
+########## END ##########
+#
+#
+########## GET DESTINATION IP ADDRESS ##########
+#
+DESTINATION_IP_ADDRESS=$(iptables -t ${TABLE_NAME} -nvL ${BUILT_IN_CHAIN_NAME} | grep "${USER_DEFINED_CHAIN_NAME}" | awk '{print $9}')
+#
+########## END ##########
+#
+#
+########## SET IPTABLES RULES ##########
+#
+# Disable chain ${USER_DEFINED_CHAIN_NAME}
+# 禁用${USER_DEFINED_CHAIN_NAME}链
+iptables -t ${TABLE_NAME} -D ${BUILT_IN_CHAIN_NAME} -d ${DESTINATION_IP_ADDRESS} -j ${USER_DEFINED_CHAIN_NAME}
+#
+# Flush chain ${USER_DEFINED_CHAIN_NAME}
+# 清空${USER_DEFINED_CHAIN_NAME}链
+iptables -t ${TABLE_NAME} -F ${USER_DEFINED_CHAIN_NAME}
+#
+# Remove chain ${USER_DEFINED_CHAIN_NAME}
+# 删除${USER_DEFINED_CHAIN_NAME}链
+iptables -t ${TABLE_NAME} -X ${USER_DEFINED_CHAIN_NAME}
+#
+########## END ##########
