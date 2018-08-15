@@ -51,7 +51,7 @@ WAN_IP_ADDRESS=$(ifconfig ppp0 | grep 'inet' | awk '{print $2}' | tr -d 'addr:')
 #
 # Check if ${USER_DEFINED_CHAIN_NAME} is referenced by ${BUILT_IN_CHAIN_NAME}
 # 检查${USER_DEFINED_CHAIN_NAME}是否被${BUILT_IN_CHAIN_NAME}所引用
-if [ -z $(iptables -t ${TABLE_NAME} -nvL ${BUILT_IN_CHAIN_NAME} | grep "${USER_DEFINED_CHAIN_NAME}") ]
+if [ -z "$(iptables -t ${TABLE_NAME} -nvL ${BUILT_IN_CHAIN_NAME} | grep "${USER_DEFINED_CHAIN_NAME}")" ]
 then
     # Make ${DESTINATION_IP_ADDRESS} 'NULL'
     # 如果未被引用，则令${DESTINATION_IP_ADDRESS}为'NULL'
@@ -71,12 +71,12 @@ fi
 # Check if the rule has been loaded
 # 检查防火墙规则是否已被加载
 if [ ${DESTINATION_IP_ADDRESS} != ${WAN_IP_ADDRESS} ] || \
-[ -z $(iptables -t ${TABLE_NAME} -nvL ${USER_DEFINED_CHAIN_NAME} | awk '{print $4"#"$11}' | grep "^udp#.*:500") ] || \
-[ -z $(iptables -t ${TABLE_NAME} -nvL ${USER_DEFINED_CHAIN_NAME} | awk '{print $4"#"$11}' | grep "^udp#.*:4500") ]
+[ -z "$(iptables -t ${TABLE_NAME} -nvL ${USER_DEFINED_CHAIN_NAME} | awk '{print $4"#"$11}' | grep "^udp#.*:500")" ] || \
+[ -z "$(iptables -t ${TABLE_NAME} -nvL ${USER_DEFINED_CHAIN_NAME} | awk '{print $4"#"$11}' | grep "^udp#.*:4500")" ]
 then
     # Delete all the relevant rules first and reload them again
     # 如果有任意规则不存在，则删除全部规则，然后重新加载
-    ${PRIVATE_BIN}/fw_nat_PREROUTING_v2ray_server_disable.service
+    ${PRIVATE_BIN}/fw_nat_PREROUTING_ipsec_disable.service
     #
     # Create chain ${USER_DEFINED_CHAIN_NAME}
     # 创建${USER_DEFINED_CHAIN_NAME}链
