@@ -76,6 +76,7 @@ then
     echo "LOAD PORT OPENING RULE ${SERVICE_NAME}"
     #
     exit 1
+    #
 else
     # Everything is OK
     # 全部规则完好

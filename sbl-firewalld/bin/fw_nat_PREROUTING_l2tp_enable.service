@@ -40,9 +40,21 @@ TARGET_SERVER="192.168.1.104"
 ########## END ##########
 #
 #
+########## GET WAN IP ADDRESS ##########
+#
+WAN_IP_ADDRESS=$(ifconfig ppp0 | grep 'inet' | awk '{print $2}' | tr -d 'addr:')
+#
+########## END ##########
+#
+#
 ########## GET DESTINATION IP ADDRESS ##########
 #
-DESTINATION_IP_ADDRESS=$(ifconfig ppp0 | grep 'inet' | awk '{print $2}' | tr -d 'addr:')
+if [ -z $(iptables -t ${TABLE_NAME} -nvL ${BUILT_IN_CHAIN_NAME} | grep "${USER_DEFINED_CHAIN_NAME}") ]
+then
+    DESTINATION_IP_ADDRESS='NULL'
+else
+    DESTINATION_IP_ADDRESS=$(iptables -t ${TABLE_NAME} -nvL ${BUILT_IN_CHAIN_NAME} | grep "${USER_DEFINED_CHAIN_NAME}" | awk '{print $9}')
+fi
 #
 ########## END ##########
 #
@@ -51,7 +63,8 @@ DESTINATION_IP_ADDRESS=$(ifconfig ppp0 | grep 'inet' | awk '{print $2}' | tr -d 
 #
 # Check if the rule has been loaded
 # 检查防火墙规则是否已被加载
-if [ -z $(iptables -t ${TABLE_NAME} -nvL ${USER_DEFINED_CHAIN_NAME} | awk '{print $4"#"$11}' | grep "^udp#.*:1701") ]
+if [ ${DESTINATION_IP_ADDRESS} != ${WAN_IP_ADDRESS} ] || \
+[ -z $(iptables -t ${TABLE_NAME} -nvL ${USER_DEFINED_CHAIN_NAME} | awk '{print $4"#"$11}' | grep "^udp#.*:1701") ]
 then
     # Delete all the relevant rules first and reload them again
     # 如果有任意规则不存在，则删除全部规则，然后重新加载
@@ -67,11 +80,12 @@ then
     #
     # Enable chain ${USER_DEFINED_CHAIN_NAME}
     # 启用${USER_DEFINED_CHAIN_NAME}链
-    iptables -t ${TABLE_NAME} -I ${BUILT_IN_CHAIN_NAME} 1 -d ${DESTINATION_IP_ADDRESS} -j ${USER_DEFINED_CHAIN_NAME}
+    iptables -t ${TABLE_NAME} -I ${BUILT_IN_CHAIN_NAME} 1 -d ${WAN_IP_ADDRESS} -j ${USER_DEFINED_CHAIN_NAME}
     #
     echo "LOAD PORT FORWARDING RULE ${SERVICE_NAME}"
     #
     exit 1
+    #
 else
     # Everything is OK
     # 全部规则完好
