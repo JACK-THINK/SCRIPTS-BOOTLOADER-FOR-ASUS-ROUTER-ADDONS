@@ -55,7 +55,7 @@ TARGET_TIME_ZONE=$(find / -name 'Shanghai' | grep -e '.*/share/zoneinfo/Asia/Sha
 #
 # Install timezone
 # 安装timezone
-if [ ! -z ${TARGET_TIME_ZONE} ]
+if [ ! -z "${TARGET_TIME_ZONE}" ]
 then
     # Create a symbolic link file named ${PRIVATE_ETC}/localtime
     # 如果文件${TARGET_TIME_ZONE}存在，则执行
@@ -66,6 +66,7 @@ else
     # Do nothing but prompt the user
     # 如果文件${TARGET_TIME_ZONE}不存在，则执行
     logger -st "($(basename $0))" $$ "***** ${SERVICE_FUNCTION} HAS NOT BEEN COMPLETE *****"
+    exit 1
 fi
 #
 ########## END ##########

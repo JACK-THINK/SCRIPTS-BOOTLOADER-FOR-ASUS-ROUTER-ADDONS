@@ -3,7 +3,7 @@
 ## 概述
 
 1. 本插件用于安装、配置、启动和结束anki_server
-2. 暂时不能开机自动启动
+2. 暂时不能开机自动启动。因此，安装程序默认不启用其monit配置文件
 
 ## 安装前提
 
@@ -33,6 +33,7 @@
 | 权限      | 名称         | 属性     | 说明         |
 | --------- | ------------ | -------- | ------------ |
 | rwxrwxrwx | production.ini | 普通文件 | 安装时自动生成 |
+| rwxrwxrwx | monit.d/anki_server | 普通文件 | monit.d配置文件 |
 
 `ASUS_ROUTER/script_bootloader/usr/anki_server/usr/`
 

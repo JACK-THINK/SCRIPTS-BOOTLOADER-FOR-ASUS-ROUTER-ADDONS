@@ -17,6 +17,7 @@
 | --------- | --------- | -------- | ---------------- |
 | rwxrwxrwx | README.md | 普通文件 | 说明文件         |
 | rwxrwxrwx | bin       | 目录     | 可执行文件目录   |
+| rwxrwxrwx | etc       | 目录     | 配置文件目录   |
 
 `ASUS_ROUTER/script_bootloader/usr/wol/bin/`
 
@@ -24,6 +25,12 @@
 | --------- | -------------------- | -------- | ------------------------------------------------------------ |
 | rwxrwxrwx | wol_enable.service  | 普通文件 | 插件的可执行程序，用于启动程序                               |
 | rwxrwxrwx | wol_disable.service | 普通文件 | 插件的可执行程序，用于结束程序                               |
+
+`ASUS_ROUTER/script_bootloader/usr/wol/etc/`
+
+| 权限      | 名称         | 属性     | 说明         |
+| --------- | ------------ | -------- | ------------ |
+| rwxrwxrwx | monit.d/wol | 普通文件 | monit.d配置文件 |
 
 ## 安装方法
 
@@ -38,7 +45,7 @@
 
 ## 需修改部分
 
-`ddns/bin/home_china_curl`
+`wol/bin/wol_enable.service`
 
 | 行号 | 代码                         | 说明                   |
 | ---- | ---------------------------- | ---------------------- |

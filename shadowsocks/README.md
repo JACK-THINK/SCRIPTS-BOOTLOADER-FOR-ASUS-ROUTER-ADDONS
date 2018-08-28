@@ -13,6 +13,7 @@
    | Android   | BifrostV      |
 
 4. 暂不开发透明代理，直到华硕官方固件支持tproxy
+5. 远端端口：22816；本地端口：1081
 
 ## 安装前提
 
@@ -48,6 +49,10 @@
 | 权限      | 名称         | 属性     | 说明                       |
 | --------- | ------------ | -------- | -------------------------- |
 | rwxrwxrwx | config_local.json | 普通文件 | ss_local_enable.service的配置文件 |
+| rwxrwxrwx | monit.d/ss_local | 普通文件 | monit.d配置文件 |
+| rwxrwxrwx | monit.d/ss_redir | 普通文件 | monit.d配置文件 |
+| rwxrwxrwx | monit.d/ss_server | 普通文件 | monit.d配置文件 |
+| rwxrwxrwx | monit.d/ss_tunnel | 普通文件 | monit.d配置文件 |
 
 ## 安装方法
 

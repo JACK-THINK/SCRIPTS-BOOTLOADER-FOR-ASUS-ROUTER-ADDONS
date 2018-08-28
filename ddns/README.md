@@ -20,6 +20,7 @@
 | rwxrwxrwx | README.md | 普通文件 | 说明文件         |
 | rwxrwxrwx | Documents_Assets | 目录 | 说明文件资源目录         |
 | rwxrwxrwx | bin       | 目录     | 可执行文件目录   |
+| rwxrwxrwx | etc       | 目录     | 配置文件目录   |
 | rwxrwxrwx | tmp       | 目录     | 临时文件目录   |
 | rwxrwxrwx | usr       | 目录     | 外部软件资源目录 |
 
@@ -27,8 +28,14 @@
 
 | 权限      | 名称                 | 属性     | 说明                                                         |
 | --------- | -------------------- | -------- | ------------------------------------------------------------ |
-| rwxrwxrwx | ddns_home_china_enable.service     | 普通文件 | 更新DDNS记录或发送邮件主程序         |
-| rwxrwxrwx | ddns_home_china_disable.service    | 普通文件 | 更新DDNS记录为无效地址并停止DDNS服务 |
+| rwxrwxrwx | ddns_enable.service     | 普通文件 | 更新DDNS记录或发送邮件主程序         |
+| rwxrwxrwx | ddns_disable.service    | 普通文件 | 更新DDNS记录为无效地址并停止DDNS服务 |
+
+`ASUS_ROUTER/script_bootloader/usr/ddns/etc/`
+
+| 权限      | 名称         | 属性     | 说明         |
+| --------- | ------------ | -------- | ------------ |
+| rwxrwxrwx | monit.d/ddns | 普通文件 | monit.d配置文件 |
 
 `ASUS_ROUTER/script_bootloader/usr/ddns/tmp/`
 
@@ -44,18 +51,18 @@
 
 ## 安装方法
 
-无需安装
+执行`/tmp/mnt/ASUS_ROUTER/script_bootloader/usr/ddns/bin/ddns_install`
 
 ## 调用方法
 
 | 插件文件                   | 插件调用者              |
 | -------------------------- | -----------------       |
-| ddns_enable.service  | monit.d/ddns_home_china |
-| ddns_disable.service | monit.d/ddns_home_china |
+| ddns_enable.service  | monit.d/ddns |
+| ddns_disable.service | monit.d/ddns |
 
 ## 需修改部分
 
-`ddns/bin/ddns_home_china_enable.service`
+`ddns/bin/ddns_enable.service`
 
 | 行号 | 代码                         | 说明                   |
 | ---- | ---------------------------- | ---------------------- |
@@ -66,7 +73,7 @@
 | 42   | `MAIL_FROM=""`               | 发件人邮箱地址         |
 | 46   | `MAIL_TO=""`                 | 收件人邮箱地址         |
 
-`ddns/bin/ddns_home_china_disable.service`
+`ddns/bin/ddns_disable.service`
 
 | 行号 | 代码               | 说明               |
 | ---- | ------------------ | ------------------ |

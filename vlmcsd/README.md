@@ -16,6 +16,7 @@
 | --------- | -------- | -------- | -------- |
 | rwxrwxrwx | README.md | 普通文件 | 说明文件 |
 | rwxrwxrwx | bin    | 目录     | 可执行文件目录 |
+| rwxrwxrwx | etc       | 目录     | 配置文件目录   |
 | rwxrwxrwx | usr    | 目录     | 外部软件资源目录 |
 
 `ASUS_ROUTER/script_bootloader/usr/vlmcsd/bin/`
@@ -25,6 +26,12 @@
 | rwxrwxrwx | vlmcsd_install         | 普通文件 | 安装文件                       |
 | rwxrwxrwx | vlmcsd_enable.service  | 普通文件 | 插件的可执行程序，用于启动程序 |
 | rwxrwxrwx | vlmcsd_disable.service | 普通文件 | 插件的可执行程序，用于结束程序 |
+
+`ASUS_ROUTER/script_bootloader/usr/vlmcsd/etc/`
+
+| 权限      | 名称         | 属性     | 说明         |
+| --------- | ------------ | -------- | ------------ |
+| rwxrwxrwx | monit.d/vlmcsd | 普通文件 | monit.d配置文件 |
 
 `ASUS_ROUTER/script_bootloader/usr/vlmcsd/usr/`
 

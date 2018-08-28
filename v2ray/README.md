@@ -13,6 +13,7 @@
    | Android   | BifrostV      |
 
 4. 暂不开发透明代理，直到华硕官方固件支持tproxy
+5. 远端端口：22815；本地端口：1080
 
 ## 安装前提
 
@@ -53,6 +54,8 @@
 | --------- | ------------- | -------- | -------------------- |
 | rwxrwxrwx | config_client.json | 普通文件 | v2ray_client_enable.service的配置文件 |
 | rwxrwxrwx | config_server.json | 普通文件 | v2ray_server_enable.service的配置文件 |
+| rwxrwxrwx | monit.d/v2ray_client | 普通文件 | monit.d配置文件 |
+| rwxrwxrwx | monit.d/v2ray_server | 普通文件 | monit.d配置文件 |
 
 ## 安装方法
 

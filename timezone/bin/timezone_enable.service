@@ -71,6 +71,7 @@ then
         # 如果文件${TARGET_TIME_ZONE}不存在，则执行
         logger -st "($(basename $0))" $$ "***** RUN timezone_install FIRST *****"
         logger -st "($(basename $0))" $$ "***** ${SERVICE_NAME}_${SERVICE_FUNCTION} SERVICE HAS NOT BEEN LOADED *****"
+        exit 1
     fi
     #
 else
@@ -78,6 +79,7 @@ else
     # 如果路由器不能与互联网成功同步时间，则执行
     logger -st "($(basename $0))" $$ "***** NTP IS NOT READY *****"
     logger -st "($(basename $0))" $$ "***** ${SERVICE_NAME}_${SERVICE_FUNCTION} SERVICE HAS NOT BEEN LOADED *****"
+    exit 2
 fi
 #
 ########## END ##########

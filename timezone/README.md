@@ -40,5 +40,5 @@
 
 | 插件文件             | 插件调用者                   | 调用位置    |
 | -------------------- | ---------------------------- | ----------- |
-| timezone_enable.service | list_of_user_custom_scripts | 第52行（安装后需手动配置开机加载。启用：删除行首`#`；禁用：恢复行首`#`） |
-| timezone_disable.service | script_bootloader_usb_umount | 自动调用 |
+| timezone_enable.service | script_bootloader_usb_mount | 106-115行间（安装后默认开机加载） |
+| timezone_disable.service | script_bootloader_usb_umount | 158-169行间（安装后默认关机加载） |

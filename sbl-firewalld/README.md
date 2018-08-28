@@ -17,6 +17,7 @@
 | --------- | --------- | -------- | -------------- |
 | rwxrwxrwx | README.md | 普通文件 | 说明文件       |
 | rwxrwxrwx | bin       | 目录     | 可执行文件目录 |
+| rwxrwxrwx | etc       | 目录     | 配置文件目录 |
 
 `ASUS_ROUTER/script_bootloader/usr/sbl-firewalld/bin/`
 
@@ -28,6 +29,14 @@
 | rwxrwxrwx | fw_nat_PREROUTING_ipsec_disable.service | 普通文件 | 防火墙端口转发规则禁用程序 |
 | rwxrwxrwx | fw_nat_PREROUTING_l2tp_enable.service  | 普通文件 | 防火墙端口转发规则启用程序 |
 | rwxrwxrwx | fw_nat_PREROUTING_l2tp_disable.service | 普通文件 | 防火墙端口转发规则禁用程序 |
+
+`ASUS_ROUTER/script_bootloader/usr/sbl-firewalld/etc/`
+
+| 权限      | 名称         | 属性     | 说明         |
+| --------- | ------------ | -------- | ------------ |
+| rwxrwxrwx | monit.d/fw_filter_INPUT_v2ray_server | 普通文件 | monit.d配置文件 |
+| rwxrwxrwx | monit.d/fw_nat_PREROUTING_ipsec | 普通文件 | monit.d配置文件 |
+| rwxrwxrwx | monit.d/fw_nat_PREROUTING_l2tp | 普通文件 | monit.d配置文件 |
 
 ## 安装方法
 

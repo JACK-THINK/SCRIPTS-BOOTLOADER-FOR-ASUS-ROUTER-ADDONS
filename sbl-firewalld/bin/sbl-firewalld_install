@@ -26,11 +26,11 @@ SBL_MONITD=${USB_MOUNT_POINT}/etc/monit.d
 #
 # PRIVATE_ETC: The directory which contains all the configuration files related to this program
 # 设置自定义变量PRIVATE_ETC为此程序配置文件目录
-PRIVATE_ETC=${SBL_SYS_USR}/syncthing/etc
+PRIVATE_ETC=${SBL_SYS_USR}/sbl-firewalld/etc
 #
 # NAME OF THE SERVICE
 # 服务名称
-SERVICE_NAME="SYNCTHING"
+SERVICE_NAME="SBL-FIREWALLD"
 #
 # FUNCTION OF THE SERVICE
 # 服务功能
@@ -46,7 +46,7 @@ logger -st "($(basename $0))" $$ "*--------- ${SERVICE_NAME} ON ${ROUTER_MODEL} 
 ########## END ##########
 #
 #
-########## INSTALL SYNCTHING ##########
+########## INSTALL SBL-FIREWALLD ##########
 #
 # Check if ENTWARE_ENABLE SERVICE has been loaded
 # 检查ENTWARE_ENABLE SERVICE是否已启用
@@ -60,33 +60,17 @@ then
     then
         logger -st "($(basename $0))" $$ "***** MONIT MANAGEMENT SYSTEM HAS BEEN DEPLOYED *****"
         #
-        # Update the list of available packages
-        # 更新可用程序包列表
-        opkg update
-        #
-        # Install syncthing
-        # 安装syncthing
-        opkg install syncthing
-        #
-        # Disable /opt/etc/init.d/S92syncthing
-        # 禁用/opt/etc/init.d/S92syncthing
-        cp /opt/etc/init.d/S92syncthing ${PRIVATE_ETC}/S92syncthing.bak
-        sed -i '/^ENABLED.*/s/^/#/' /opt/etc/init.d/S92syncthing
-        sed -i '/^#ENABLED.*/a\ENABLED=no' /opt/etc/init.d/S92syncthing
-        #
-        # Configure syncthing
-        # 配置syncthing
-        if [ ! -d /opt/etc/syncthing ]
-        then
-            syncthing -generate="/opt/etc/syncthing"
-            sed -i 's/127.0.0.1:8384/0.0.0.0:8384/' /opt/etc/syncthing/config.xml
-        fi
-        #
         # Configure monit
         # 配置monit
-        cp ${PRIVATE_ETC}/monit.d/syncthing ${SBL_MONITD}/
-        chmod 600 ${SBL_MONITD}/syncthing
-        mv ${SBL_MONITD}/syncthing ${SBL_MONITD}/syncthing.on
+        cp ${PRIVATE_ETC}/monit.d/fw_filter_INPUT_v2ray_server ${SBL_MONITD}/
+        cp ${PRIVATE_ETC}/monit.d/fw_nat_PREROUTING_ipsec ${SBL_MONITD}/
+        cp ${PRIVATE_ETC}/monit.d/fw_nat_PREROUTING_l2tp ${SBL_MONITD}/
+        chmod 600 ${SBL_MONITD}/fw_filter_INPUT_v2ray_server
+        chmod 600 ${SBL_MONITD}/fw_nat_PREROUTING_ipsec
+        chmod 600 ${SBL_MONITD}/fw_nat_PREROUTING_l2tp
+        mv ${SBL_MONITD}/fw_filter_INPUT_v2ray_server ${SBL_MONITD}/fw_filter_INPUT_v2ray_server.on
+        mv ${SBL_MONITD}/fw_nat_PREROUTING_ipsec ${SBL_MONITD}/fw_nat_PREROUTING_ipsec.on
+        mv ${SBL_MONITD}/fw_nat_PREROUTING_l2tp ${SBL_MONITD}/fw_nat_PREROUTING_l2tp.on
         monit reload
         #
         logger -st "($(basename $0))" $$ "***** ${SERVICE_FUNCTION} HAS BEEN COMPLETE *****"
