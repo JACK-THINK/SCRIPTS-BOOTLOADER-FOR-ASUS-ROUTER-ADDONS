@@ -17,12 +17,7 @@
 
 ## 安装方法
 
-1. 安装[SCRIPTS-BOOTLOADER-FOR-ASUS-ROUTER](https://github.com/JACK-THINK/SCRIPTS-BOOTLOADER-FOR-ASUS-ROUTER)系统
-2. 按次序安装并启用下列插件
-   - swap
-   - entware
-   - monit
-   - development_tools
-3. 将所需插件目录存放至`script_bootloader/usr/`目录下
-4. 执行插件`bin`目录中的`*_install`（若有）安装插件
-5. 根据各插件README.md的具体说明及插件管理者[使用说明](https://github.com/JACK-THINK/SCRIPTS-BOOTLOADER-FOR-ASUS-ROUTER/blob/master/How_to_Use.md#%E5%90%AF%E7%94%A8%E7%A6%81%E7%94%A8%E6%8F%92%E4%BB%B6)启用插件
+1. 将所需插件目录存放至`script_bootloader/usr/`目录下
+2. 将addons_install存放至`script_bootloader/bin/`目录下
+3. 安装[SCRIPTS-BOOTLOADER-FOR-ASUS-ROUTER](https://github.com/JACK-THINK/SCRIPTS-BOOTLOADER-FOR-ASUS-ROUTER)系统，详见[使用说明](https://github.com/JACK-THINK/SCRIPTS-BOOTLOADER-FOR-ASUS-ROUTER/blob/master/How_to_Use.md#%E5%AE%89%E8%A3%85%E6%8C%89%E7%85%A7%E4%B8%8B%E8%BF%B0%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C)
+4. 各插件安装后会自动启用，无需另行配置。如有特殊需求，参考[使用说明](https://github.com/JACK-THINK/SCRIPTS-BOOTLOADER-FOR-ASUS-ROUTER/blob/master/How_to_Use.md#%E5%90%AF%E7%94%A8%E7%A6%81%E7%94%A8%E6%8F%92%E4%BB%B6)

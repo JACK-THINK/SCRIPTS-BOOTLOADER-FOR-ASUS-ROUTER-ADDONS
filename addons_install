@@ -76,6 +76,8 @@ do
     echo "11. wol"
     echo " 0. exit"
     #
+    echo -n "Input ONE number every time: "
+    #
     # Read the input of user
     # 读取用户输入值
     read input_value
