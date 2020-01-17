@@ -18,10 +18,10 @@
 | 权限      | 名称            | 属性     | 说明             |
 | --------- | --------------- | -------- | ---------------- |
 | rwxrwxrwx | README_zh-CN.md | 普通文件 | 说明文件         |
-| rwxrwxrwx | bin       | 目录     | 可执行文件目录   |
-| rwxrwxrwx | etc       | 目录     | 配置文件目录     |
-| rwxrwxrwx | tmp       | 目录     | 临时文件目录     |
-| rwxrwxrwx | usr       | 目录     | 外部软件资源目录 |
+| rwxrwxrwx | bin             | 目录     | 可执行文件目录   |
+| rwxrwxrwx | etc             | 目录     | 配置文件目录     |
+| rwxrwxrwx | tmp             | 目录     | 临时文件目录     |
+| rwxrwxrwx | usr             | 目录     | 外部软件资源目录 |
 
 `ASUS_ROUTER/script_bootloader/usr/he_ddns/bin/`
 
@@ -78,37 +78,37 @@
 
 1. 登录<https://dns.he.net>
 
-   ![step1](./Documents_Assets/he_ddns/dns_he_net_configuration/step1.png)
+   ![step1](../../../Documents_Assets/he_ddns/dns_he_net_configuration/step1.png)
 
 2. 单击“Add a new domain”
 
-   ![step2](./Documents_Assets/he_ddns/dns_he_net_configuration/step2.png)
+   ![step2](../../../Documents_Assets/he_ddns/dns_he_net_configuration/step2.png)
 
 3. 在“Domain Name”中，填入将要使用的顶级域名（格式为：`XXX.XXX`）并单击“Add Domain!”
 
-   ![step3](./Documents_Assets/he_ddns/dns_he_net_configuration/step3.png)
+   ![step3](../../../Documents_Assets/he_ddns/dns_he_net_configuration/step3.png)
 
 4. 页面提示“域名添加成功”
 
-   ![step4](./Documents_Assets/he_ddns/dns_he_net_configuration/step4.png)
+   ![step4](../../../Documents_Assets/he_ddns/dns_he_net_configuration/step4.png)
 
 #### 修改域名DNS服务器
 
 1. 登录域名管理控制台，找到要使用的域名，单击“管理”
 
-   ![step1](./Documents_Assets/he_ddns/domain_configuration/step1.png)
+   ![step1](../../../Documents_Assets/he_ddns/domain_configuration/step1.png)
 
 2. 在该域名管理页面中，单击“修改DNS”
 
-   ![step2](./Documents_Assets/he_ddns/domain_configuration/step2.png)
+   ![step2](../../../Documents_Assets/he_ddns/domain_configuration/step2.png)
 
 3. 在DNS管理页面中，单击“修改DNS服务器”
 
-   ![step3](./Documents_Assets/he_ddns/domain_configuration/step3.png)
+   ![step3](../../../Documents_Assets/he_ddns/domain_configuration/step3.png)
 
 4. 将该域名的默认DNS服务器变更为HE.NET提供的DNS服务器
 
-   ![step4](./Documents_Assets/he_ddns/domain_configuration/step4.png)
+   ![step4](../../../Documents_Assets/he_ddns/domain_configuration/step4.png)
 
 5. 修改完成后，需等待2-24小时，方可生效
 
@@ -116,11 +116,11 @@
 
 1. 找到新添加的域名，单击下图红框处“Edit”图标
 
-   ![step5](./Documents_Assets/he_ddns/dns_he_net_configuration/step5.png)
+   ![step5](../../../Documents_Assets/he_ddns/dns_he_net_configuration/step5.png)
 
 2. 单击“New A”
 
-   ![step6](./Documents_Assets/he_ddns/dns_he_net_configuration/step6.png)
+   ![step6](../../../Documents_Assets/he_ddns/dns_he_net_configuration/step6.png)
 
 3. 填入如下内容并单击“Submit”
 
@@ -129,12 +129,12 @@
    > - TTL (Time to live)：5 minutes
    > - Enable entry for dynamic dns：必选
 
-   ![step7](./Documents_Assets/he_ddns/dns_he_net_configuration/step7.png)
+   ![step7](../../../Documents_Assets/he_ddns/dns_he_net_configuration/step7.png)
 
 4. 单击“Generate a DDNS key”图标
 
-   ![step8](./Documents_Assets/he_ddns/dns_he_net_configuration/step8.png)
+   ![step8](../../../Documents_Assets/he_ddns/dns_he_net_configuration/step8.png)
 
 5. 单击“Generate a key”后，两个文本框内会自动填写“DDNS Key”，**记录**并单击“Submit”
 
-   ![step9](./Documents_Assets/he_ddns/dns_he_net_configuration/step9.png)
+   ![step9](../../../Documents_Assets/he_ddns/dns_he_net_configuration/step9.png)
