@@ -67,14 +67,16 @@ case "$(/opt/bin/uname -m)" in
         ;;
     "mips")
         ROUTER_ARCHITECTURE="mipsle"
-        /opt/bin/echo -e "($(basename $0)): $$ \033[1;41;37mFAILURE\033[0m: ${ROUTER_ARCHITECTURE} IS NOT SUPPORTED TEMPORARILY"
+        /opt/bin/echo -e "($(basename $0)): $$ \033[1;43;31mNOTICE\033[0m: ${ROUTER_ARCHITECTURE} IS NOT SUPPORTED TEMPORARILY"
+        /opt/bin/echo -e "($(basename $0)): $$ \033[1;41;37mFAILURE\033[0m: ${SERVICE_FUNCTION} ${SERVICE_NAME}"
         #
         exit 6
         ;;
     *)
         # Do nothing but prompt the user
         # 如果路由器架构不符合上述三种情况，则执行
-        /opt/bin/echo -e "($(basename $0)): $$ \033[1;41;37mFAILURE\033[0m: ROUTER ARCHITECTURE IS UNKNOWN"
+        /opt/bin/echo -e "($(basename $0)): $$ \033[1;43;31mNOTICE\033[0m: ROUTER ARCHITECTURE IS UNKNOWN"
+        /opt/bin/echo -e "($(basename $0)): $$ \033[1;41;37mFAILURE\033[0m: ${SERVICE_FUNCTION} ${SERVICE_NAME}"
         #
         exit 3
         ;;
@@ -86,11 +88,11 @@ DOWNLOAD_LINK="https://github.com/filebrowser/filebrowser/releases/download/${LA
 #
 # ADMINUSER: The administrator of the router
 # 设置环境变量ADMINUSER为路由器管理页面的登陆帐号
-ADMINUSER="$(nvram get http_username)"
+ADMINUSER="$(/opt/bin/sed -E -n -e 's#^ADMINUSER=\"(.*)\"#\1#p' "/opt/etc/sbl_credentials")"
 #
 # ADMINPASSWORD: The administrator's password of the router
 # 设置环境变量ADMINPASSWORD为路由器管理页面的登陆密码
-ADMINPASSWORD="$(nvram get http_passwd)"
+ADMINPASSWORD="$(/opt/bin/sed -E -n -e 's#^ADMINPASSWORD=\"(.*)\"#\1#p' "/opt/etc/sbl_credentials")"
 #
 # NAME OF THE SERVICE
 # 服务名称
@@ -118,9 +120,9 @@ if [ "$(which opkg)" == "/opt/bin/opkg" ]
 then
     /opt/bin/echo -e "($(basename $0)): $$ \033[1;44;37mINFO\033[0m: ENTWARE_ENABLE SERVICE HAS BEEN LOADED"
     #
-    # Check if MONIT MANAGEMENT SYSTEM has been deployed
-    # 检查MONIT MANAGEMENT SYSTEM是否已部署
-    if [ -e "/opt/bin/monit" ]
+    # Check if MONIT MANAGEMENT SYSTEM is enabled
+    # 检查MONIT MANAGEMENT SYSTEM是否已启用
+    if [ "$(which monit)" == "/opt/bin/monit" ]
     then
         /opt/bin/echo -e "($(basename $0)): $$ \033[1;44;37mINFO\033[0m: MONIT MANAGEMENT SYSTEM HAS BEEN DEPLOYED"
         #
