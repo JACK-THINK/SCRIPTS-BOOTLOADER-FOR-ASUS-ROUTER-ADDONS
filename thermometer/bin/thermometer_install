@@ -14,7 +14,7 @@ ROUTER_MODEL="$(nvram get model)"
 #
 # NAME OF THE SERVICE
 # 服务名称
-SERVICE_NAME="ALI_DDNS"
+SERVICE_NAME="THERMOMETER"
 #
 # FUNCTION OF THE SERVICE
 # 服务功能
@@ -38,23 +38,11 @@ ENTWARE_MONITD="${ENTWARE_ETC}/monit.d"
 #
 # PRIVATE_ROOT: The root directory for this program
 # 设置自定义变量PRIVATE_ROOT为此程序根目录
-PRIVATE_ROOT="${SBL_SYS_USR}/ali_ddns"
-#
-# PRIVATE_BIN: The directory which contains all the executable files related to this program
-# 设置自定义变量PRIVATE_BIN为此程序可执行文件目录
-PRIVATE_BIN="${PRIVATE_ROOT}/bin"
+PRIVATE_ROOT="${SBL_SYS_USR}/thermometer"
 #
 # PRIVATE_ETC: The directory which contains all the configuration files related to this program
 # 设置自定义变量PRIVATE_ETC为此程序配置文件目录
 PRIVATE_ETC="${PRIVATE_ROOT}/etc"
-#
-# PRIVATE_TMP: The directory which contains all the temporary files related to this program
-# 设置自定义变量PRIVATE_TMP为此程序临时文件目录
-PRIVATE_TMP="${PRIVATE_ROOT}/tmp"
-#
-# PRIVATE_VAR: The directory which contains all the variable files related to this program
-# 设置自定义变量PRIVATE_VAR为此程序可变文件目录
-PRIVATE_VAR="${PRIVATE_ROOT}/var"
 #
 ########## END ##########
 #
@@ -66,7 +54,7 @@ PRIVATE_VAR="${PRIVATE_ROOT}/var"
 ########## END ##########
 #
 #
-########## INSTALL ALI_DDNS ##########
+########## INSTALL THERMOMETER ##########
 #
 # Check if ENTWARE_ENABLE SERVICE has been loaded
 # 检查ENTWARE_ENABLE SERVICE是否已启用
@@ -80,45 +68,16 @@ then
     then
         /opt/bin/echo -e "($(basename $0)): $$ \033[1;44;37mINFO\033[0m: MONIT MANAGEMENT SYSTEM HAS BEEN DEPLOYED"
         #
-        # Check if aliyun-cli has been deployed
-        # 检查aliyun-cli是否已部署
-        if [ ! -e "/opt/bin/aliyun" ]
-        then
-            # Install aliyun-cli
-            # 安装aliyun-cli
-            "${SBL_SYS_USR}/aliyun-cli/bin/aliyun-cli_install"
-        fi
+        # Configure monit
+        # 配置monit
+        /opt/bin/cp -f "${PRIVATE_ETC}/monit.d/thermometer" "${ENTWARE_MONITD}"
+        /opt/bin/chmod 600 "${ENTWARE_MONITD}/thermometer"
+        /opt/bin/mv -f "${ENTWARE_MONITD}/thermometer" "${ENTWARE_MONITD}/thermometer.on"
+        /opt/bin/monit reload
         #
-        # Create directory ${PRIVATE_TMP}
-        # 创建目录${PRIVATE_TMP}
-        /opt/bin/mkdir "${PRIVATE_TMP}"
+        /opt/bin/echo -e "($(basename $0)): $$ \033[1;42;37mSUCCESS\033[0m: ${SERVICE_FUNCTION} ${SERVICE_NAME}"
         #
-        # Create directory ${PRIVATE_VAR}
-        # 创建目录${PRIVATE_VAR}
-        /opt/bin/mkdir "${PRIVATE_VAR}"
-        #
-        # Configure ali_ddns_enable.service and ali_ddns_disable.service
-        # 配置ali_ddns_enable.service和ali_ddns_disable.service
-        "${PRIVATE_BIN}/ali_ddns_configure"
-        #
-        if [ ${?} -eq 0 ]
-        then
-            # Configure monit
-            # 配置monit
-            /opt/bin/cp -f "${PRIVATE_ETC}/monit.d/ali_ddns" "${ENTWARE_MONITD}"
-            /opt/bin/chmod 600 "${ENTWARE_MONITD}/ali_ddns"
-            /opt/bin/mv -f "${ENTWARE_MONITD}/ali_ddns" "${ENTWARE_MONITD}/ali_ddns.on"
-            /opt/bin/monit reload
-            #
-            /opt/bin/echo -e "($(basename $0)): $$ \033[1;42;37mSUCCESS\033[0m: ${SERVICE_FUNCTION} ${SERVICE_NAME}"
-            #
-            exit 0
-            #
-        else
-            /opt/bin/echo -e "($(basename $0)): $$ \033[1;41;37mFAILURE\033[0m: ${SERVICE_FUNCTION} ${SERVICE_NAME}"
-            #
-            exit 3
-        fi
+        exit 0
         #
     else
         # Do nothing but prompt the user
